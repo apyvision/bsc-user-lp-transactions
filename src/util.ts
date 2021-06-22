@@ -12,12 +12,7 @@ export const ZERO_BI = BigInt.fromI32(0);
 export const ONE_BI = BigInt.fromI32(1);
 
 
-function getProviderName(poolProviderKey: string): string {
-  return 'Pancakeswap'
-}
-
-
-export function maybeCreateUserLpTransaction(event: ethereum.Event, userAddrs: Address, poolAddrs: Address): void {
+export function maybeCreateUserLpTransaction(event: ethereum.Event, userAddrs: Address, poolAddrs: Address, poolProviderKey: string): void {
   let userId = userAddrs.toHexString()
 
   let user = User.load(userId)
@@ -36,6 +31,7 @@ export function maybeCreateUserLpTransaction(event: ethereum.Event, userAddrs: A
     let transfer = new UserLPTransaction(id)
     transfer.user = user.id
     transfer.poolAddress = poolAddrs
+    transfer.poolProviderKey = poolProviderKey
     transfer.transactionHash = event.transaction.hash
     transfer.blockNumber = event.block.number
     transfer.timestamp = event.block.timestamp
@@ -64,7 +60,6 @@ export function maybeCreateUserLiquidityPosition(userAddrs: Address, poolAddrs: 
     lp.poolAddress = poolAddrs
     lp.user = user.id
     lp.poolProviderKey = poolProviderKey
-    lp.poolProviderName = getProviderName(poolProviderKey)
     lp.save()
   }
 }
