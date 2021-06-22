@@ -1,0 +1,46 @@
+type User @entity {
+  id: ID!
+  liquidityPositions: [LiquidityPosition!] @derivedFrom(field: "user")
+  userLPTransactions: [UserLPTransaction!] @derivedFrom(field: "user")
+}
+
+type LiquidityPosition @entity {
+  id: ID!
+  user: User!
+  poolAddress: Bytes!
+  poolProviderName: PoolProviderName!
+  poolProviderKey: PoolProviderKey!
+}
+
+type UserLPTransaction @entity {
+  id: ID!
+  user: User!
+  poolAddress: Bytes!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type Exception @entity {
+  id: ID!
+  addrs: Bytes!
+  txHash: Bytes!
+  message: String!
+}
+
+enum PoolProviderName {
+  Quickswap
+  Sushiswap
+  Cometh
+  Elk
+  Dfyn
+}
+
+enum PoolProviderKey {
+  quickswap_matic
+  sushiswap_matic
+  cometh_matic
+  elk_matic
+  dfyn_matic
+}
+
