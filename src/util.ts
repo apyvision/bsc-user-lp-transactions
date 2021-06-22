@@ -13,19 +13,7 @@ export const ONE_BI = BigInt.fromI32(1);
 
 
 function getProviderName(poolProviderKey: string): string {
-  if (poolProviderKey == 'quickswap_matic') {
-    return 'Quickswap'
-  } else if (poolProviderKey == 'sushiswap_matic') {
-    return 'Sushiswap'
-  } else if (poolProviderKey == 'cometh_matic') {
-    return 'Cometh'
-  } else if (poolProviderKey == 'elk_matic') {
-    return 'Elk'
-  } else if (poolProviderKey == 'dfyn_matic') {
-    return 'Dfyn'
-  } else {
-    return ''
-  }
+  return 'Pancakeswap'
 }
 
 

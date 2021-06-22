@@ -29,18 +29,10 @@ type Exception @entity {
 }
 
 enum PoolProviderName {
-  Quickswap
-  Sushiswap
-  Cometh
-  Elk
-  Dfyn
+  Pancakeswap
 }
 
 enum PoolProviderKey {
-  quickswap_matic
-  sushiswap_matic
-  cometh_matic
-  elk_matic
-  dfyn_matic
+  pancakeswap_bsc
 }
 
